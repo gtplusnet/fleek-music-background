@@ -1,0 +1,95 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:2:1-25:12
+	package
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:3:5-35
+		INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+		INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:2:1-25:12
+		INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:2:1-25:12
+		INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:5:5-71
+	android:name
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:5:22-68
+uses-permission#android.permission.CAMERA
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:6:5-65
+	android:name
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:6:22-62
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:7:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:8:5-80
+	android:name
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:8:22-77
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:9:5-80
+	android:name
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:9:22-77
+uses-permission#android.permission.INTERNET
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:10:5-66
+	android:name
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:10:22-64
+uses-feature#android.hardware.camera
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:12:5-60
+	android:name
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:12:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:13:5-70
+	android:name
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:13:19-67
+application
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:15:5-23:19
+	android:supportsRtl
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:18:9-35
+	android:label
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:17:9-41
+	android:allowBackup
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:16:9-35
+	android:theme
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:19:9-40
+activity#com.video.videomusic.MusicGallery
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:20:9-49
+	android:name
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:20:19-47
+activity#com.video.videomusic.PreviewVideoActivity
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:21:9-93
+	android:theme
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:21:56-91
+	android:name
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:21:19-55
+activity#com.video.videomusic.MainActivity
+ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:22:9-85
+	android:theme
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:22:48-83
+	android:name
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml:22:19-47
+uses-sdk
+INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+		INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+		ADDED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml
+		INJECTED from E:\1 Fleek Project\video-music-background\video-music-background\android\src\main\AndroidManifest.xml

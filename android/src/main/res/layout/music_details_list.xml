@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5sp"
+    android:gravity="center">
+    <FrameLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:adjustViewBounds="true"
+        android:id="@+id/music_thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="50sp"
+        android:maxHeight="50sp"/>
+    <ImageView
+        android:background="#4D686868"
+        android:layout_gravity="center"
+        android:id="@+id/selected_check"
+        android:adjustViewBounds="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="50sp"
+        android:maxHeight="50sp"
+        android:src="@drawable/ic_check"
+        android:visibility="gone"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_margin="2sp"
+            android:id="@+id/music_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Music Title"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_margin="2sp"
+            android:id="@+id/music_artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Music Artist"
+            android:textColor="#b4b4b4"
+            android:textSize="9sp"/>
+        <TextView
+            android:layout_margin="2sp"
+            android:id="@+id/music_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1:04"
+            android:textColor="#b4b4b4"
+            android:textSize="9sp"/>
+    </LinearLayout>
+
+</LinearLayout>
+</RelativeLayout>
