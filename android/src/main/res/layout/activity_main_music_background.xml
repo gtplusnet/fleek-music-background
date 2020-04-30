@@ -107,6 +107,7 @@
           android:id="@+id/effects"
           android:src="@drawable/ic_effect_btn"
           android:background="@null"
+          android:visibility="invisible"
           />
        <ImageButton
            android:layout_weight="1"
@@ -128,6 +129,19 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:orientation="vertical">
+           <TextView
+               android:id="@+id/duration_record"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:textSize="16sp"
+               android:textStyle="bold"
+               android:textColor="@color/light_font"
+               android:shadowRadius="2"
+               android:shadowColor="@color/text_shadow"
+               android:shadowDx="1"
+               android:shadowDy="1"
+               />
            <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="match_parent"

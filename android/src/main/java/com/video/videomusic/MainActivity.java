@@ -15,6 +15,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -83,6 +85,9 @@ public class MainActivity extends Activity {
     boolean isBackPress = false;
     LinearLayout secondsSelections;
     ProgressBar progressBar;
+    TextView durationRecord;
+    Timer timerDuration;
+    long startTime = 0;
 
     /** Called when the activity is first created. */
     @Override
@@ -132,6 +137,7 @@ public class MainActivity extends Activity {
                     timer.start(((Activity)context));
                 }else{
                     mediaRecorder.start();
+                    runDuration();
                     //timer.start();
                 }
 
@@ -451,6 +457,7 @@ public class MainActivity extends Activity {
                     "Fail to get Camera",
                     Toast.LENGTH_LONG).show();
         }
+        durationRecord = findViewById(R.id.duration_record);
         myCameraSurfaceView = new MyCameraSurfaceView(this, myCamera,this);
         FrameLayout myCameraPreview = (FrameLayout)findViewById(R.id.CameraView);
         myCameraPreview.addView(myCameraSurfaceView);
@@ -487,7 +494,7 @@ public class MainActivity extends Activity {
         musicGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!recording) startActivity(new Intent(context,MusicGallery.class)); finish();
+                if(!recording){ startActivity(new Intent(context,MusicGallery.class)); finish();}
             }
         });
         selectedMusic.setVisibility(View.GONE);
@@ -521,6 +528,11 @@ public class MainActivity extends Activity {
     public void stopRecording(){
         // stop recording and release camera
         if(timer != null) timer.cancel();
+        if(timerDuration != null){
+            timerDuration.cancel();
+            durationRecord.setText("0:00");
+            durationRecord.setVisibility(View.INVISIBLE);
+        }
         myButton.setImageResource(R.drawable.ic_play_btn);
         recordBg.clearAnimation();
         mediaRecorder.stop();  // stop the recording
@@ -598,7 +610,7 @@ public class MainActivity extends Activity {
         return optimalSize;
     }
 
-    void startRecording(){
+    void startRecording(){ // start video with music background
         mediaRecorder.start();
         try {
             Thread.sleep(500);
@@ -608,6 +620,7 @@ public class MainActivity extends Activity {
         mediaPlayer.start();
         if(isSelectedMusic) timer.start();
     }
+
 
     public class CountDownTime extends CountDownTimer {
         private WeakReference<Activity> mActivityRef;
@@ -722,6 +735,23 @@ public class MainActivity extends Activity {
             path = videoInput.getAbsolutePath();
         }
         return path;
+    }
+
+    void runDuration(){
+        durationRecord.setVisibility(View.VISIBLE);
+        startTime = System.currentTimeMillis();
+        timerDuration = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                long millis = System.currentTimeMillis() - startTime;
+                int seconds = (int) (millis / 1000);
+                int minutes = seconds / 60;
+                seconds     = seconds % 60;
+                durationRecord.setText(String.format("%d:%02d", minutes, seconds));
+            }
+        };
+        timerDuration.schedule(timerTask,0,1000);
     }
 
 }
