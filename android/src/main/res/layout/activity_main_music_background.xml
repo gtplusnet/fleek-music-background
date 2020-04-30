@@ -6,11 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.video.videomusic.MainActivity">
-
    <FrameLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:id="@+id/CameraView"/>
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:id="@+id/progress_bar"/>
     <TextView
         android:id="@+id/countdown"
         android:layout_width="match_parent"
@@ -160,7 +165,9 @@
                    android:layout_width="match_parent"
                    android:layout_height="match_parent"
                    android:weightSum="3"
-                   android:layout_margin="2sp">
+                   android:layout_margin="2sp"
+                   android:id="@+id/seconds_selection"
+                   android:visibility="gone">
                    <TextView
                        android:layout_weight="1"
                        android:layout_width="wrap_content"

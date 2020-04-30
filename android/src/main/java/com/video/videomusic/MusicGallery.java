@@ -277,18 +277,13 @@ public class MusicGallery extends AppCompatActivity {
         @Override
         protected void onPostExecute(String file_url) {
             try {
-                if (musicAdapter.getMediaPlayer() != null) {
-                    musicAdapter.getMediaPlayer().stop();
-                    musicAdapter.setMediaPlayer(null);
-                }
-                if (dubAdapter.getMediaPlayer() != null) {
-                    dubAdapter.getMediaPlayer().stop();
-                    dubAdapter.setMediaPlayer(null);
-                }
+                if(allMediaPlayer != null) allMediaPlayer.stop(); allMediaPlayer = null;
                 mediaPlayer = new MediaPlayer();
                 mediaPlayer = MediaPlayer.create(context, Uri.parse(file_url));
                 MainActivity.duration = mediaPlayer.getDuration() + 2000;
                 this.dialog.dismiss();
+                mediaPlayer = null;
+                System.out.println(MainActivity.duration + " aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ");
                 Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
                 finish();

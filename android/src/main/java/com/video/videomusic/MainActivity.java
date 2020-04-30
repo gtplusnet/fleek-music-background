@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -27,6 +26,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.File;
@@ -37,6 +37,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import com.arthenica.mobileffmpeg.Config;
@@ -79,6 +81,8 @@ public class MainActivity extends Activity {
     ImageButton userBack;
     Animation animation;
     boolean isBackPress = false;
+    LinearLayout secondsSelections;
+    ProgressBar progressBar;
 
     /** Called when the activity is first created. */
     @Override
@@ -87,7 +91,6 @@ public class MainActivity extends Activity {
         recording = false;
         List<String> externalLibraries = Config.getExternalLibraries();
         setContentView(R.layout.activity_main_music_background);
-
         //Get Camera for preview
 
         //myCamera.setDisplayOrientation(90); //Doesn't error here, but doesn't affect video.
@@ -129,13 +132,13 @@ public class MainActivity extends Activity {
                     timer.start(((Activity)context));
                 }else{
                     mediaRecorder.start();
-                    timer.start();
+                    //timer.start();
                 }
 
                 recording = true;
             }
         }catch (Exception ex){
-            ex.printStackTrace();
+            Toast.makeText(context,ex.getMessage(),Toast.LENGTH_LONG).show();
         }
     }};
 
@@ -174,9 +177,8 @@ public class MainActivity extends Activity {
 //        setCameraDisplayOrientation(this,cameraUsing,myCamera);
         if(isSelectedMusic) mediaPlayer = MediaPlayer.create(context, Uri.parse(musicPath));
         myCamera.unlock();
-
         mediaRecorder.setCamera(myCamera);
-        int duration = MainActivity.duration;
+        final int duration = MainActivity.duration;
         tempPath = getFile().getPath();
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
         mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
@@ -187,6 +189,8 @@ public class MainActivity extends Activity {
         timer = new CountDownTimer(duration, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                double test = ((double)duration - (double)millisUntilFinished) / (double)duration;
+                progressBar.setProgress((int)(test * 100));
             }
             @Override
             public void onFinish() {
@@ -212,6 +216,7 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         initCamera();
+        progressBar.setProgress(0);
     }
     @Override
     protected void onPostResume() {
@@ -219,6 +224,7 @@ public class MainActivity extends Activity {
         if (getIntent().getBooleanExtra("EXIT", false)) {
             finish();
         }
+        progressBar.setProgress(0);
     }
     @Override
     protected void onDestroy() {
@@ -244,8 +250,13 @@ public class MainActivity extends Activity {
     }
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        isBackPress = true;
+        if(recording) {
+            Toast.makeText(context,"Still Recording.",Toast.LENGTH_LONG).show();
+        }
+        else {
+            isBackPress = true;
+            super.onBackPressed();
+        }
     }
 
     private void releaseMediaRecorder(){
@@ -440,24 +451,18 @@ public class MainActivity extends Activity {
                     "Fail to get Camera",
                     Toast.LENGTH_LONG).show();
         }
-
         myCameraSurfaceView = new MyCameraSurfaceView(this, myCamera,this);
         FrameLayout myCameraPreview = (FrameLayout)findViewById(R.id.CameraView);
         myCameraPreview.addView(myCameraSurfaceView);
-
         myButton = (ImageButton) findViewById(R.id.record);
         myButton.setOnClickListener(myButtonOnClickListener);
-
         recordBg = findViewById(R.id.record_bg);
-
         flipCamera = (ImageButton) findViewById(R.id.flip);
         flipCamera.setOnClickListener(flipCameraOnClick);
-
         thirtyDuration = findViewById(R.id.thirty_duration);
         fifteenDuration = findViewById(R.id.fifteen_duration);
-
         selectedMusic = findViewById(R.id.music_selected);
-
+        secondsSelections = findViewById(R.id.seconds_selection);
         thirtyDuration.setTextSize(15);
         thirtyDuration.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -476,6 +481,8 @@ public class MainActivity extends Activity {
             }
         });
 
+        progressBar = findViewById(R.id.progress_bar);
+
         musicGallery = findViewById(R.id.music_gallery);
         musicGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -488,6 +495,7 @@ public class MainActivity extends Activity {
         if(isSelectedMusic){
             selectedMusic.setVisibility(View.VISIBLE);
             selectedMusic.setText(musicName);
+            secondsSelections.setVisibility(View.GONE);
         }
 
         countDown = findViewById(R.id.countdown);
@@ -512,13 +520,13 @@ public class MainActivity extends Activity {
 
     public void stopRecording(){
         // stop recording and release camera
-        recordBg.clearAnimation();
+        if(timer != null) timer.cancel();
         myButton.setImageResource(R.drawable.ic_play_btn);
+        recordBg.clearAnimation();
         mediaRecorder.stop();  // stop the recording
         if(mediaPlayer != null) {
             mediaPlayer.stop();
         }
-        timer.cancel();
         releaseMediaRecorder(); // release the MediaRecorder object
         musicPath = Environment.getExternalStorageDirectory() + "/Android/data/"+getPackageName()+"/music/test_1.mp3";
         FFmpegBackground task = new FFmpegBackground(context);
@@ -598,7 +606,7 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
         mediaPlayer.start();
-        timer.start();
+        if(isSelectedMusic) timer.start();
     }
 
     public class CountDownTime extends CountDownTimer {
@@ -715,4 +723,5 @@ public class MainActivity extends Activity {
         }
         return path;
     }
+
 }
